@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aplicación de IA para clasificar deportes en imágenes">
+    <title>Sports AI - Clasificación de Deportes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="logo">Sports AI</div>
+        <div class="auth-buttons">
+            <button id="registerButton" class="btn-secondary">Registrarse</button>
+            <button id="loginButton" class="btn-primary">Iniciar Sesión</button>
+            <button id="logoutButton" class="btn-secondary hidden">Cerrar Sesión</button>
+        </div>
+    </header>
+
+    <div class="auth-modal" id="authModal">
+        <div class="auth-content">
+            <span class="close-btn" id="closeAuth">&times;</span>
+            <h2 id="authTitle">Iniciar Sesión</h2>
+            <form id="authForm">
+                <div id="registerFields" class="hidden">
+                    <div class="input-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" placeholder="Tu nombre completo">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" placeholder="tucorreo@ejemplo.com" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" placeholder="Mínimo 6 caracteres" required minlength="6">
+                </div>
+                <button type="submit" id="submitAuth" class="btn-primary">Continuar</button>
+                <div id="authFeedback" class="feedback"></div>
+            </form>
+            <div class="auth-footer">
+                <p id="authToggle">¿No tienes cuenta? <a href="#" id="toggleAuth">Regístrate</a></p>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="hero">
+            <h1><i class="fas fa-trophy"></i> Sports AI</h1>
+            <p class="subtitle">Sube una imagen y nuestro modelo de IA identificará el deporte con precisión.</p>
+        </div>
+
+        <div class="upload-section">
+            <div class="upload-area" id="dropZone">
+                <input type="file" id="imageInput" accept="image/*">
+                <label for="imageInput" class="upload-btn">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <span>Seleccionar Imagen o arrastrar aquí</span>
+                </label>
+                <div class="file-info" id="fileInfo"></div>
+            </div>
+
+            <div class="preview-container">
+                <div id="imagePreviewContainer">
+                    <img id="imagePreview" src="" alt="Vista previa de la imagen">
+                    <button id="clearPreview" class="btn-icon" aria-label="Eliminar imagen">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button id="classifyButton" class="btn-action" disabled>
+                <i class="fas fa-search"></i> Clasificar Deporte
+            </button>
+
+            <div class="result-container">
+                <div id="result">
+                    <div class="placeholder">
+                        <i class="fas fa-image"></i>
+                        <p>Sube una imagen para identificar el deporte</p>
+                        <p class="small-text">Ejemplos: fútbol, baloncesto, tenis, natación</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Sports AI. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Firebase SDKs -->
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="APP.js"></script>
+</body>
+
+</html>
